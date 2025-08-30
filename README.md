@@ -15,18 +15,23 @@ This repository contains:
 
 ```text
 my-claude-code/
-├── .claude/              # Claude Code configuration directory
-│   └── commands/         # Custom commands and automation
-│       └── auto-doc.md   # Auto-documentation update command
-├── CLAUDE.md            # Project context and guidance for Claude Code
-└── README.md            # This file
+├── .claude/                    # Claude Code configuration directory
+│   └── commands/              # Custom commands and automation
+├── docs/                      # Additional detailed documentation
+├── add-global-command.sh      # Utility to make commands globally available
+├── CLAUDE.md                  # Project context and guidance for Claude Code
+└── README.md                  # This file
 ```
 
 ## Features
 
 ### Custom Commands
 
-- **auto-doc**: Comprehensive documentation update automation that analyzes codebases and refreshes all project documentation
+This repository includes a collection of custom Claude Code commands for automation and workflow optimization. See [`docs/commands.md`](docs/commands.md) for detailed information about available commands, usage examples, and when to use each tool.
+
+### Utilities
+
+- **add-global-command.sh**: Shell script to copy specific commands from this repository to the global Claude Code commands directory (`~/.claude/commands/`)
 
 ### Configuration Management
 
@@ -34,28 +39,57 @@ my-claude-code/
 - Project-specific guidance through CLAUDE.md
 - Workflow optimization templates
 
-## Usage
+## How to Use
 
-This repository is designed to work with Claude Code CLI. The configurations and commands here enhance Claude Code's understanding and capabilities when working on various projects.
+This repository enhances your Claude Code CLI experience with custom automation commands and optimized configurations.
 
-### Getting Started
+### Prerequisites
 
-1. Clone this repository to your local machine
-2. Ensure Claude Code CLI is installed and configured
-3. The `.claude/` directory contains custom commands that can be referenced in Claude Code sessions
-4. Modify `CLAUDE.md` as needed for specific project contexts
+- [Claude Code CLI](https://claude.ai/code) installed and configured
+- Git for version control
+- Basic familiarity with command-line tools
 
-### Available Commands
+### Setup Instructions
 
-#### Auto-Documentation (`/auto-doc`)
+1. **Clone the Repository**
 
-Automatically updates all documentation in a project to reflect current codebase state:
+   ```bash
+   git clone https://github.com/irfansofyana/my-claude-code.git
+   cd my-claude-code
+   ```
 
-- Analyzes project structure and features
-- Updates README.md with current functionality
-- Refreshes API documentation and setup instructions
-- Enhances CLAUDE.md with project context
-- Validates all documentation changes
+2. **Make Scripts Executable**
+
+   ```bash
+   chmod +x add-global-command.sh
+   ```
+
+3. **Using Commands Locally**
+   - Commands in `.claude/commands/` are automatically available when working within this repository
+   - Use `/auto-doc`, `/codebase-explorer`, or `/article` directly in Claude Code sessions
+
+4. **Making Commands Globally Available** (Recommended)
+
+   ```bash
+   # Add all commands globally
+   ./add-global-command.sh auto-doc
+   ./add-global-command.sh codebase-explorer  
+   ./add-global-command.sh article
+   
+   # Or check available commands first
+   ./add-global-command.sh
+   ```
+
+5. **Verify Installation**
+   - Open any project in Claude Code
+   - Type `/auto-doc` or `/codebase-explorer` to confirm commands are available globally
+
+## Documentation
+
+For comprehensive information about this repository:
+
+- [`docs/commands.md`](docs/commands.md) - Available custom commands and usage guide
+- [`docs/contributing.md`](docs/contributing.md) - Guide for creating new commands
 
 ## Contributing
 
@@ -64,4 +98,5 @@ This is a personal configuration repository. Feel free to fork and adapt for you
 ## Links
 
 - [Claude Code Documentation](https://docs.anthropic.com/claude/docs)
+- [Claude Code Slash Commands](https://docs.anthropic.com/en/docs/claude-code/slash-commands)
 - [GitHub Repository](https://github.com/irfansofyana/my-claude-code)
